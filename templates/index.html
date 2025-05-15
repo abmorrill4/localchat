@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head><title>Chat</title></head>
+<body>
+  <p>Logged in as {{ username }} | <a href="/logout">Logout</a></p>
+  <form method="POST">
+    <textarea name="prompt" rows="10" cols="80"></textarea><br>
+    <input type="submit" value="Send">
+  </form>
+
+  {% if response %}
+    <hr><strong>Latest Response:</strong>
+    <pre>{{ response }}</pre>
+  {% endif %}
+
+  <hr><h3>History</h3>
+  {% for entry in history %}
+    <p><strong>{{ entry.timestamp }}</strong></p>
+    <pre>User: {{ entry.prompt }}</pre>
+    <pre>AI: {{ entry.response }}</pre>
+    <hr>
+  {% endfor %}
+</body>
+</html>

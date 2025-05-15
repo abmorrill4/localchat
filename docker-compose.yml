@@ -1,0 +1,12 @@
+version: "3.8"
+
+services:
+  aichat:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./users.json:/app/users.json
+      - ./user_chats:/app/user_chats
+    environment:
+      - PYTHONUNBUFFERED=1
